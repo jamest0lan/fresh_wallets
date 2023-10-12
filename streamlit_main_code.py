@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 try:
     syve_api_key = st.secrets["syve_api_key"]
 except KeyError:
-    st.error("API_KEY not found. Please ensure it's set in Streamlit secrets.")
+    st.error("syve_api_key not found. Please ensure it's set in Streamlit secrets.")
     st.stop()
 
 """
