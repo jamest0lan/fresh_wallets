@@ -4,7 +4,12 @@ import pandas as pd
 import requests
 import time
 from datetime import datetime, timedelta
-API_KEY = st.secrets["API_KEY"]
+
+try:
+    syve_api_key = st.secrets["API_KEY"]
+except KeyError:
+    st.error("API_KEY not found. Please ensure it's set in Streamlit secrets.")
+    st.stop()
 
 """
 # Find Fresh Wallets Fast
@@ -16,9 +21,9 @@ If you have any questions or notice any errors text me on [Twitter](https://twit
 ### Powered by the [Syve.ai](https://www.syve.ai/) API. 
 """
 
-def request_fresh_wallet_trades(token_address, days, API_KEY):
+def request_fresh_wallet_trades(token_address, days, syve_api_key):
 
-    url = f'https://api.syve.ai/v1/fresh-wallet-trades?token_address={token_address}&days={days}&key={API_KEY}'
+    url = f'https://api.syve.ai/v1/fresh-wallet-trades?token_address={token_address}&days={days}&key={syve_api_key}'
 
     response = requests.get(url)
 
@@ -34,7 +39,7 @@ except ValueError:
     st.warning("Please enter a valid integer for days.")
     days = None
   
-fresh_wallets_df = request_fresh_wallet_trades(token_address, days, API_KEY)
+fresh_wallets_df = request_fresh_wallet_trades(token_address, days, syve_api_key)
 st.write(f"Fresh Wallet Trades Over {days} Days")
 st.write(fresh_wallets_df)
 
