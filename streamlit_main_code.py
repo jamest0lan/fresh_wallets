@@ -1,12 +1,10 @@
 # Streamlit main code
 import streamlit as st
 import pandas as pd
-import math
-from collections import namedtuple
-import altair as alt
 import requests
 import time
 from datetime import datetime, timedelta
+API_KEY = st.secrets["API_KEY"]
 
 """
 # Find Fresh Wallets Fast
@@ -39,3 +37,16 @@ except ValueError:
 fresh_wallets_df = request_fresh_wallet_trades(token_address, days, API_KEY)
 st.write(f"Fresh Wallet Trades Over {days} Days")
 st.write(fresh_wallets_df)
+
+if days:
+
+    # Assuming there's a 'timestamp' column in your dataframe
+    fresh_wallets_df['date'] = pd.to_datetime(fresh_wallets_df['timestamp']).dt.date
+
+    # Group by date and sum the trades
+    daily_trades = fresh_wallets_df.groupby('date').sum('amount_usd')  # Replace with the appropriate column to sum if different
+
+    # Plotting
+    st.write(f"Fresh Wallet Trades Over {days} Days")
+    st.write(fresh_wallets_df)
+    st.bar_chart(daily_trades)
