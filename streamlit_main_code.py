@@ -8,9 +8,36 @@ import requests
 import time
 from datetime import datetime, timedelta
 
-def create_datafrane(dataframe):
-  dataframe = pd.DataFrame(data)
+"""
+# Find Fresh Wallets Fast
 
-  return dataframe
+Enter a token below to find fresh wallet trades.
 
-st.write("Testing")
+If you have any questions or notice any errors text me on [Twitter](https://twitter.com/JamesT0lan).
+
+## Data Information: 
+
+### Powered by the [Syve.ai](https://www.syve.ai/) API. 
+"""
+
+def request_fresh_wallet_trades(token_address, days):
+
+    url = f'https://api.syve.ai/v1/fresh-wallet-trades?token_address={token_address}&days={days}&key={API_KEY}'
+
+    response = requests.get(url)
+
+    return pd.DataFrame(response.json())
+
+token_address = st.text_input("Token Address", "0xd084944d3c05cd115c09d072b9f44ba3e0e45921")
+
+days = st.text_input("Fresh Wallet Age in Days", '7')
+
+try:
+    days = int(days)
+except ValueError:
+    st.warning("Please enter a valid integer for days.")
+    days = None
+  
+fresh_wallets_df = request_fresh_wallet_trades(token_address, days)
+st.write(f"Fresh Wallet Trades Over {days} Days")
+st.write(fresh_wallets_df)
