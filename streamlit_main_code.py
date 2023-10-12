@@ -49,7 +49,7 @@ if days:
     fresh_wallets_df['date'] = pd.to_datetime(fresh_wallets_df['timestamp']).dt.date
 
     # Group by date and sum the trades
-    daily_trades = fresh_wallets_df.groupby('date').sum('amount_usd')  # Replace with the appropriate column to sum if different
+    daily_trade_volume = fresh_wallets_df.groupby('date').sum('amount_usd')  # Replace with the appropriate column to sum if different
 
     # Plotting
-    st.bar_chart(daily_trades)
+    st.bar_chart(daily_trade_volume)
