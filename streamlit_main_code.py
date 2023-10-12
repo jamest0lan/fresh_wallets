@@ -52,6 +52,4 @@ if days:
     daily_trades = fresh_wallets_df.groupby('date').sum('amount_usd')  # Replace with the appropriate column to sum if different
 
     # Plotting
-    st.write(f"Fresh Wallet Trades Over {days} Days")
-    st.write(fresh_wallets_df)
     st.bar_chart(daily_trades)
