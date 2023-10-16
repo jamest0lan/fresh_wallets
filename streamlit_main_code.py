@@ -12,9 +12,9 @@ except KeyError:
     st.stop()
 
 """
-# Find Fresh Wallets Fast
+# Find Fresh Wallets Fast & Spot Insider Trading
 
-Enter a token below to find fresh wallet trades. Run time generally <7s.
+Enter a token below to find fresh wallet trades. Run time generally <6s.
 
 If you have any questions or notice any errors text me on [Twitter](https://twitter.com/JamesT0lan).
 
