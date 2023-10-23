@@ -33,7 +33,7 @@ def request_fresh_wallet_trades(token_address, days, syve_api_key):
         st.write(response)
         st.write(response.text)
 
-token_address = st.text_input("Token Address", "0xd084944d3c05cd115c09d072b9f44ba3e0e45921")
+token_address = st.text_input("Token Address", "0xd533a949740bb3306d119cc777fa900ba034cd52")
 
 days = st.text_input("Fresh Wallet Age in Days", '7')
 
