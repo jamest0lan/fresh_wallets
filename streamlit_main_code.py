@@ -26,8 +26,12 @@ def request_fresh_wallet_trades(token_address, days, syve_api_key):
     url = f'https://api.syve.ai/v1/fresh-wallet-trades?token_address={token_address}&days={days}&key={syve_api_key}'
 
     response = requests.get(url)
-
-    return pd.DataFrame(response.json())
+    try:
+        df = pd.DataFrame(response.json())
+        return df
+    except: 
+        st.write(response)
+        st.write(response.text)
 
 token_address = st.text_input("Token Address", "0xd084944d3c05cd115c09d072b9f44ba3e0e45921")
 
