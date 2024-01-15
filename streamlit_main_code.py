@@ -16,7 +16,7 @@ except KeyError:
 
 Enter a token below to find fresh wallet trades. Run time generally <6s.
 
-If you have any questions or notice any errors text me on [Twitter](https://twitter.com/JamesT0lan).
+If you have any questions or notice any errors text me on [Twitter](https://twitter.com/JxTolan).
 
 ### Powered by the [Syve.ai](https://www.syve.ai/) API. 
 """
