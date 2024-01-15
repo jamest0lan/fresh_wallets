@@ -14,7 +14,7 @@ except KeyError:
 """
 # Find Fresh Wallets Fast & Spot Insider Trading
 
-Enter a token below to find fresh wallet trades. Run time generally <6s.
+Enter an Ethereum token address below to find fresh wallet trades. Max number of days = 30.
 
 If you have any questions or notice any errors text me on [Twitter](https://twitter.com/JxTolan).
 
